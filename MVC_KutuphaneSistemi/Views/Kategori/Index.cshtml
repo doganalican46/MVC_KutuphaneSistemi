@@ -1,8 +1,48 @@
-﻿
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Kategoriler>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Kategoriler</h2>
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kategoriler / </b>Kategori Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>KATEGORİ ADI</th>
+                    <th>DURUM</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kategori in Model)
+                {
+                    <tr>
+                        <td>@kategori.Ad</td>
+                        <td style="color: @(kategori.Durum.HasValue && kategori.Durum.Value ? "green" : "red")">
+                            @(kategori.Durum.HasValue ? (kategori.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                        </td>
+                        <td>
+                            <a href="/Kategori/KategoriSil/@kategori.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Kategori/KategoriGetir/@kategori.ID" class="btn btn-primary">GÜNCELLE</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="#" class="btn btn-warning">Yeni Kategori Ekle</a>
+    </div>
+</div>
+
 

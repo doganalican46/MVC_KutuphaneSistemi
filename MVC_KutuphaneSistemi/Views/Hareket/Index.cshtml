@@ -1,0 +1,51 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "Hareketler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Hareketler / </b>Hareket Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>KİTAP ADI</th>
+                    <th>ÜYE ADI</th>
+                    <th>ALIM/TESLİM TARİHİ</th>
+                    <th>DURUM</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hareket in Model)
+                {
+                    <tr>
+                        <td>@hareket.Kitap.Ad</td>
+                        <td>@hareket.Uye.Ad</td>
+                        <td>@hareket.AlimTeslimTarihi</td>
+                        <td style="color: @(hareket.Durum.HasValue && hareket.Durum.Value ? "green" : "red")">
+                            @(hareket.Durum.HasValue ? (hareket.Durum.Value ? "TESLİM EDİLDİ" : "BEKLEMEDE") : "N/A")
+                        </td>
+                        <td>
+                            <a href="/Hareketler/HareketSil/@hareket.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Hareketler/HareketGetir/@hareket.ID" class="btn btn-primary">GÜNCELLE</a>
+                            <a href="/Hareketler/DetayGör/@hareket.ID" class="btn btn-warning">DETAY</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="Hareketler/YeniHareket/" class="btn btn-warning">Yeni Hareket Ekle</a>
+    </div>
+</div>
+

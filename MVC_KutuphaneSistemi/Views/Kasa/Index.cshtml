@@ -1,0 +1,50 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Kasalar>
+@{
+    ViewBag.Title = "Kasalar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kasalar / </b>Kasa Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>KASA ADI</th>
+                    <th>KASA TÜRÜ</th>
+                    <th>BALANS</th>
+                    <th>DURUM</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kasa in Model)
+                {
+                    <tr>
+                        <td>@kasa.Ad</td>
+                        <td>@kasa.Tur</td>
+                        <td>@kasa.Bakiye</td>
+                        <td style="color: @(kasa.Durum.HasValue && kasa.Durum.Value ? "green" : "red")">
+                            @(kasa.Durum.HasValue ? (kasa.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                        </td>
+                        <td>
+                            <a href="/Kasa/KasaSil/@kasa.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Kasa/KasaGetir/@kasa.ID" class="btn btn-primary">GÜNCELLE</a>
+                            <a href="/Kasa/DetayGör/@kasa.ID" class="btn btn-warning">DETAY</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="Kasa/YeniKasa/" class="btn btn-warning">Yeni Kasa Ekle</a>
+    </div>
+</div>

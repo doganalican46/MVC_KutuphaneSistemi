@@ -1,0 +1,51 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Personeller>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Personeller / </b>Personel Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>PERSONEL ADI</th>
+                    <th>HAREKETLER</th>
+                    <th>DURUM</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var personeller in Model)
+                {
+                    <tr>
+                        <td>@personeller.Ad</td>
+                        <td style="color: @(personeller.Durum.HasValue && personeller.Durum.Value ? "green" : "red")">
+                            @(personeller.Durum.HasValue ? (personeller.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                        </td>
+                        <td>
+                            <a href="/Personel/PersonelSil/@personeller.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Personel/PersonelGetir/@personeller.ID" class="btn btn-primary">GÜNCELLE</a>
+                            <a href="/Personel/DetayGör/@personeller.ID" class="btn btn-warning">DETAY</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="/Personel/YeniPersonel/" class="btn btn-warning">Yeni Personel Ekle</a>
+    </div>
+</div>
+
+
+
+

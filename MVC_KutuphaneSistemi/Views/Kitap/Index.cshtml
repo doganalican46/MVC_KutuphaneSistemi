@@ -1,8 +1,52 @@
-﻿
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Kitaplar>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Kitaplar:</h2>
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kitaplar / </b>Kitap Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>KİTAP ADI</th>
+                    <th>KATEGORİ ADI</th>
+                    <th>YAZAR ADI</th>
+                    <th>DURUM</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kitaplar in Model)
+                {
+                    <tr>
+                        <td>@kitaplar.Ad</td>
+                        <td style="color: @(kitaplar.Durum.HasValue && kitaplar.Durum.Value ? "green" : "red")">
+                            @(kitaplar.Durum.HasValue ? (kitaplar.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                        </td>
+                        <td>
+                            <a href="/Kitap/KitapSil/@kitaplar.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Kitap/KitapGetir/@kitaplar.ID" class="btn btn-primary">GÜNCELLE</a>
+                            <a href="/Kitap/DetayGör/@kitaplar.ID" class="btn btn-warning">DETAY</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="Kitap/YeniKitap/" class="btn btn-warning">Yeni Kitap Ekle</a>
+    </div>
+</div>
+
+
+
 
