@@ -12,37 +12,44 @@
     </div>
 
     <div class="card-body">
-        <table id="DataTable" class="table table-hover" style="width:100%">
-            <thead>
-                <tr>
-                    <th>KATEGORİ ADI</th>
-                    <th>DURUM</th>
-                    <th>İŞLEMLER</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var kategori in Model)
-                {
+        @if (Model.Any())
+        {
+            <table id="DataTable" class="table table-hover" style="width:100%">
+                <thead>
                     <tr>
-                        <td>@kategori.Ad</td>
-                        <td style="color: @(kategori.Durum.HasValue && kategori.Durum.Value ? "green" : "red")">
-                            @(kategori.Durum.HasValue ? (kategori.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
-                        </td>
-                        <td>
-                            <a href="/Kategori/KategoriSil/@kategori.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
-                            <a href="/Kategori/KategoriGetir/@kategori.ID" class="btn btn-primary">GÜNCELLE</a>
-
-                        </td>
+                        <th>KATEGORİ ADI</th>
+                        <th>DURUM</th>
+                        <th>İŞLEMLER</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var kategori in Model)
+                    {
+                        <tr>
+                            <td>@kategori.Ad</td>
+                            <td style="color: @(kategori.Durum.HasValue && kategori.Durum.Value ? "green" : "red")">
+                                @(kategori.Durum.HasValue ? (kategori.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                            </td>
+                            <td>
+                                <a href="/Kategori/KategoriSil/@kategori.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                                <a href="/Kategori/KategoriGetir/@kategori.ID" class="btn btn-primary">GÜNCELLE</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Kategori bulunamadı.</p>
+        }
     </div>
 
     <div class="card-footer">
         <br />
-        <a href="#" class="btn btn-warning">Yeni Kategori Ekle</a>
+        <a href="/Kategori/YeniKategori/" class="btn btn-warning">Yeni Kategori Ekle</a>
     </div>
 </div>
+
 
 

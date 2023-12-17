@@ -1,0 +1,26 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Kategoriler
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kategoriler / </b>Yeni Kategori Ekle</h2>
+        <br />
+    </div>
+    <form method="post" class="form-group">
+        <div class="card-body">
+            <label>Kategori Adı:</label>
+            <input type="text" name="Ad" class="form-control" />
+            <input type="hidden" name="Durum" value="true" />
+        </div>
+
+        <div class="card-footer">
+            <br />
+            <a href="/Kategori/Index/" class="btn btn-danger">Vazgeç</a>
+            <button class="btn btn-primary">Ekle</button>
+        </div>
+    </form>
+
+</div>

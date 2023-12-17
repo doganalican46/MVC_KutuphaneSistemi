@@ -16,8 +16,7 @@
             <thead>
                 <tr>
                     <th>YAZAR ADI</th>
-                    <th>YAZAR SOYADI</th>
-                    <th>ÜLKE</th>
+                    <th>DETAY</th>
                     <th>DURUM</th>
                     <th>İŞLEMLER</th>
                 </tr>
@@ -26,16 +25,14 @@
                 @foreach (var yazar in Model)
                 {
                     <tr>
-                        <td>@yazar.Ad</td>
-                        <td>@yazar.Soyad</td>
-                        <td>@yazar.Ulke</td>
+                        <td>@yazar.Ad @yazar.Soyad</td>
+                        <td>@yazar.Detay</td>
                         <td style="color: @(yazar.Durum.HasValue && yazar.Durum.Value ? "green" : "red")">
                             @(yazar.Durum.HasValue ? (yazar.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
                         </td>
                         <td>
                             <a href="/Yazar/YazarSil/@yazar.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
                             <a href="/Yazar/YazarGetir/@yazar.ID" class="btn btn-primary">GÜNCELLE</a>
-                            <a href="/Yazar/DetayGör/@yazar.ID" class="btn btn-warning">DETAY</a>
                         </td>
                     </tr>
                 }
@@ -45,6 +42,6 @@
 
     <div class="card-footer">
         <br />
-        <a href="Yazar/YeniYazar/" class="btn btn-warning">Yeni Yazar Ekle</a>
+        <a href="/Yazar/YeniYazar/" class="btn btn-warning">Yeni Yazar Ekle</a>
     </div>
 </div>

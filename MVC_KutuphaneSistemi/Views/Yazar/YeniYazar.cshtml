@@ -1,0 +1,33 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Yazarlar
+@{
+    ViewBag.Title = "YeniYazar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Yazarlar / </b>Yeni Yazar Ekle</h2>
+        <br />
+    </div>
+    <form method="post" class="form-group">
+        <div class="card-body">
+            <label>Yazar Ad:</label>
+            <input type="text" name="Ad" class="form-control" />
+            <br />
+            <label>Yazar Soyad:</label>
+            <input type="text" name="Soyad" class="form-control" />
+            <br />
+            <label>Yazar Detay:</label>
+            <input type="text" name="Detay" class="form-control" />
+
+            <input type="hidden" name="Durum" value="true" />
+        </div>
+
+        <div class="card-footer">
+            <br />
+            <a href="/Yazar/Index/" class="btn btn-danger">Vazgeç</a>
+            <button class="btn btn-primary">Ekle</button>
+        </div>
+    </form>
+
+</div>

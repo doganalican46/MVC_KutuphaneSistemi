@@ -1,0 +1,40 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Kategoriler
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kategoriler / </b>Kategori Güncelle</h2>
+        <br />
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+        {
+            <div class="card-body">
+                @Html.HiddenFor(k => k.ID)
+                <BR />
+                <label>Kategori Adı:</label>
+                @Html.TextBoxFor(k => k.Ad, new { @class = "form-control" })
+                <br />
+                <label>Kategori Durum:</label>
+                @Html.DropDownListFor(k => k.Durum, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "AKTİF", Value = "true" },
+                    new SelectListItem { Text = "PASİF", Value = "false" }
+                }, new { @class = "form-control" })
+
+
+            </div>
+
+            <div class="card-footer">
+                <br />
+                <a href="/Kategori/Index/" class="btn btn-danger">Vazgeç</a>
+                <button class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+    </div>
+</div>
+

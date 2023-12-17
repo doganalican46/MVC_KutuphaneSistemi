@@ -1,0 +1,45 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Yazarlar
+@{
+    ViewBag.Title = "YazarGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Yazarlar / </b>Yazar Güncelle</h2>
+        <br />
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm("YazarGuncelle", "Yazar", FormMethod.Post))
+        {
+            <div class="card-body">
+                @Html.HiddenFor(y => y.ID)
+                <BR />
+                <label>Yazar Ad:</label>
+                @Html.TextBoxFor(y => y.Ad, new { @class = "form-control" })
+                <BR />
+                <label>Yazar Soyad:</label>
+                @Html.TextBoxFor(y => y.Soyad, new { @class = "form-control" })
+                <BR />
+                <label>Yazar Detayları:</label>
+                @Html.TextBoxFor(y => y.Detay, new { @class = "form-control" })
+                <br />
+                <label>Yazar Durum:</label>
+                @Html.DropDownListFor(y => y.Durum, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "AKTİF", Value = "true" },
+                    new SelectListItem { Text = "PASİF", Value = "false" }
+                }, new { @class = "form-control" })
+
+            </div>
+
+            <div class="card-footer">
+                <br />
+                <a href="/Yazar/Index/" class="btn btn-danger">Vazgeç</a>
+                <button class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+    </div>
+</div>
+

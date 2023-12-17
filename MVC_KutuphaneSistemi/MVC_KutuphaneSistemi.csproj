@@ -130,7 +130,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CezaController.cs" />
     <Compile Include="Controllers\HareketController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KasaController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KitapController.cs" />
@@ -329,12 +328,17 @@
     <Content Include="web\vendor\jquery\jquery.min.map" />
     <Content Include="web\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Personel\Index.cshtml" />
-    <Content Include="Views\Uyeler\Index.cshtml" />
     <Content Include="Views\Uye\Index.cshtml" />
     <Content Include="Views\Yazar\Index.cshtml" />
     <Content Include="Views\Kasa\Index.cshtml" />
     <Content Include="Views\Ceza\Index.cshtml" />
     <Content Include="Views\Hareket\Index.cshtml" />
+    <Content Include="_Listele.cshtml" />
+    <Content Include="Views\ViewPage1.cshtml" />
+    <Content Include="Views\Kategori\YeniKategori.cshtml" />
+    <Content Include="Views\Kategori\KategoriGetir.cshtml" />
+    <Content Include="Views\Yazar\YeniYazar.cshtml" />
+    <Content Include="Views\Yazar\YazarGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
