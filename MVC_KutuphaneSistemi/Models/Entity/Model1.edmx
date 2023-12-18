@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBKutuphaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBKutuphaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cezalar">
           <Key>
             <PropertyRef Name="ID" />
@@ -26,6 +26,8 @@
           <Property Name="PersonelID" Type="int" />
           <Property Name="AlisTarihi" Type="smalldatetime" />
           <Property Name="IadeTarihi" Type="smalldatetime" />
+          <Property Name="UyeninGetirdigiTarih" Type="smalldatetime" />
+          <Property Name="Durum" Type="bit" />
         </EntityType>
         <EntityType Name="Kasalar">
           <Key>
@@ -254,8 +256,7 @@
             <End Role="Kitaplar" EntitySet="Kitaplar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBKutuphaneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -286,6 +287,8 @@
           <NavigationProperty Name="Kitaplar" Relationship="Self.FK_Hareketler_Kitaplar" FromRole="Hareketler" ToRole="Kitaplar" />
           <NavigationProperty Name="Personeller" Relationship="Self.FK_Hareketler_Personeller" FromRole="Hareketler" ToRole="Personeller" />
           <NavigationProperty Name="Uyeler" Relationship="Self.FK_Hareketler_Uyeler" FromRole="Hareketler" ToRole="Uyeler" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="UyeninGetirdigiTarih" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Kasalar">
           <Key>
@@ -553,6 +556,8 @@
           <EntitySetMapping Name="Hareketler">
             <EntityTypeMapping TypeName="DBKutuphaneModel.Hareketler">
               <MappingFragment StoreEntitySet="Hareketler">
+                <ScalarProperty Name="UyeninGetirdigiTarih" ColumnName="UyeninGetirdigiTarih" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="KitapID" ColumnName="KitapID" />
                 <ScalarProperty Name="UyeID" ColumnName="UyeID" />

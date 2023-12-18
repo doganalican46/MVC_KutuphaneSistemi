@@ -1,0 +1,40 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Hareketler
+@{
+    ViewBag.Title = "OduncVer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Odünç İşlemleri / </b>Ödünç Kitap Ver</h2>
+        <br />
+    </div>
+    <form method="post" class="form-group">
+        <div class="card-body">
+            <label>Üye ID:</label>
+            @Html.TextBoxFor(k => k.UyeID, new { @class = "form-control" })
+            <br />
+            <label>Kitap ID:</label>
+            @Html.TextBoxFor(k => k.KitapID, new { @class = "form-control" })
+            <br />
+            <label>Personel ID:</label>
+            @Html.TextBoxFor(k => k.PersonelID, new { @class = "form-control" })
+            <br />
+            <label>Alış Tarihi:</label>
+            <input type="text" name="AlisTarihi" value="@DateTime.Now.ToShortDateString()" class="form-control" />
+            <br />
+            <label>İade Tarihi:</label>
+            <input type="text" name="IadeTarihi" value="@DateTime.Now.AddDays(7).ToShortDateString()" class="form-control" />
+            <br />
+            <input type="hidden" name="Durum" value="false" />
+
+        </div>
+
+        <div class="card-footer">
+            <br />
+            <a href="/Odunc/Index/" class="btn btn-danger">Vazgeç</a>
+            <button class="btn btn-primary">Ödünç Ver</button>
+        </div>
+    </form>
+
+</div>

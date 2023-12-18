@@ -1,0 +1,50 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Hareketler
+@{
+    ViewBag.Title = "OduncAl";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Oduncler / </b>Odunc Güncelle</h2>
+        <br />
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))
+        {
+        <div class="card-body">
+
+            @Html.HiddenFor(k => k.ID)
+            <BR />
+            <label>Kitap Adı:</label>
+            @Html.TextBoxFor(k => k.Kitaplar.Ad, new { @class = "form-control" })
+            <br />
+            <label>Üye Adı:</label>
+            @Html.TextBoxFor(k => k.Uyeler.Ad , new { @class = "form-control" })
+            <br />
+            <label>Personel Adı:</label>
+            @Html.TextBoxFor(k => k.Personeller.Ad, new { @class = "form-control" })
+            <br />
+            <label>Alış Tarihi:</label>
+            @Html.TextBoxFor(k => k.AlisTarihi, "{0: dd/MM/yyyy}", new { @class = "form-control" })
+            <br />
+            <label>İade Tarihi:</label>
+            @Html.TextBoxFor(k => k.IadeTarihi, "{0: dd/MM/yyyy}", new { @class = "form-control" })
+            <br />
+            <label>Üyenin Getirdiği Tarih:</label>
+            <input type="text" name="UyeninGetirdigiTarih" value="@DateTime.Now.ToShortDateString()" class="form-control" />
+            <br />
+
+
+        </div>
+
+            <div class="card-footer">
+                <br />
+                <a href="/Odunc/Index/" class="btn btn-danger">Vazgeç</a>
+                <button class="btn btn-warning">İade Et</button>
+            </div>
+        }
+    </div>
+</div>
+

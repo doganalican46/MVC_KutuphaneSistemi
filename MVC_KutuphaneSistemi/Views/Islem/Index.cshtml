@@ -1,0 +1,58 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>İşlemler / </b>İşlem Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <table id="DataTable" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ÜYE ADI</th>
+                        <th>KİTAP ADI</th>
+                        <th>PERSONEL</th>
+                        <th>ALIŞ TARİHİ</th>
+                        <th>ÜYENİN GETİRDİĞİ TARİH</th>
+                        <th>İŞLEMLER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Odunc in Model)
+                    {
+                        <tr>
+                            <td>@Odunc.Uyeler.Ad @Odunc.Uyeler.Soyad</td>
+                            <td>@Odunc.Kitaplar.Ad </td>
+                            <td>@Odunc.Personeller.Ad @Odunc.Personeller.Soyad </td>
+                            <td>@Convert.ToDateTime(Odunc.AlisTarihi).ToString("dd/MM/yyyy")  </td>
+                            <td>@Convert.ToDateTime(Odunc.UyeninGetirdigiTarih).ToString("dd/MM/yyyy")  </td>
+                            <td>
+                                <a href="/Odunc/Detay/@Odunc.ID" class="btn btn-success">DETAY</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>İşlem bulunamadı.</p>
+        }
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="/Odunc/OduncVer/" class="btn btn-warning">Ödünç Ver</a>
+    </div>
+</div>
+
+
+

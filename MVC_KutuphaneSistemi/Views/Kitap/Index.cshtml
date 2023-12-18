@@ -15,6 +15,7 @@
         <table id="DataTable" class="table table-hover" style="width:100%">
             <thead>
                 <tr>
+                    <th>KİTAP ID</th>
                     <th>KİTAP ADI</th>
                     <th>KATEGORİ ADI</th>
                     <th>YAZAR ADI</th>
@@ -26,6 +27,7 @@
                 @foreach (var kitaplar in Model)
                 {
                     <tr>
+                        <td>@kitaplar.ID</td>
                         <td>@kitaplar.Ad</td>
                         <td>@(kitaplar.Kategoriler != null ? kitaplar.Kategoriler.Ad : "N/A")</td>
                         <td>
