@@ -1,0 +1,44 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Kitaplar
+@{
+    ViewBag.Title = "YeniKitap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kitaplar / </b>Yeni Kitap Ekle</h2>
+        <br />
+    </div>
+    <form method="post" class="form-group">
+        <div class="card-body">
+            <label>Kitap Adı:</label>
+            <input type="text" name="Ad" class="form-control" />
+            <br />
+            <label>Kitap Kategorisi:</label>
+            @Html.DropDownListFor(k => k.Kategoriler.ID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+            @*<input type="text" name="KategoriID" class="form-control" />*@
+            <br />
+            <label>Kitap Yazarı:</label>
+            @Html.DropDownListFor(k => k.Yazarlar.ID, (List<SelectListItem>)ViewBag.yazarlar, new { @class = "form-control" })
+            @*<input type="text" name="YazarID" class="form-control" />*@
+            <br />
+            <label>Basım Yılı:</label>
+            <input type="text" name="BasimYili" class="form-control" />
+            <br />
+            <label>Yayınevi:</label>
+            <input type="text" name="YayinEvi" class="form-control" />
+            <br />
+            <label>Sayfa Sayisi:</label>
+            <input type="text" name="SayfaSayisi" class="form-control" />
+
+            <input type="hidden" name="Durum" value="true" />
+        </div>
+
+        <div class="card-footer">
+            <br />
+            <a href="/Kitap/Index/" class="btn btn-danger">Vazgeç</a>
+            <button class="btn btn-primary">Ekle</button>
+        </div>
+    </form>
+
+</div>

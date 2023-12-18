@@ -27,9 +27,14 @@
                 {
                     <tr>
                         <td>@kitaplar.Ad</td>
+                        <td>@(kitaplar.Kategoriler != null ? kitaplar.Kategoriler.Ad : "N/A")</td>
+                        <td>
+                            @(kitaplar.Yazarlar != null ? $"{kitaplar.Yazarlar.Ad} {kitaplar.Yazarlar.Soyad}" : "N/A")
+                        </td>
                         <td style="color: @(kitaplar.Durum.HasValue && kitaplar.Durum.Value ? "green" : "red")">
                             @(kitaplar.Durum.HasValue ? (kitaplar.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
                         </td>
+
                         <td>
                             <a href="/Kitap/KitapSil/@kitaplar.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
                             <a href="/Kitap/KitapGetir/@kitaplar.ID" class="btn btn-primary">GÜNCELLE</a>
@@ -43,7 +48,7 @@
 
     <div class="card-footer">
         <br />
-        <a href="Kitap/YeniKitap/" class="btn btn-warning">Yeni Kitap Ekle</a>
+        <a href="/Kitap/YeniKitap/" class="btn btn-warning">Yeni Kitap Ekle</a>
     </div>
 </div>
 

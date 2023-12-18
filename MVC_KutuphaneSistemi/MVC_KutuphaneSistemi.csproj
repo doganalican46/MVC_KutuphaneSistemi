@@ -339,6 +339,8 @@
     <Content Include="Views\Kategori\KategoriGetir.cshtml" />
     <Content Include="Views\Yazar\YeniYazar.cshtml" />
     <Content Include="Views\Yazar\YazarGetir.cshtml" />
+    <Content Include="Views\Kitap\YeniKitap.cshtml" />
+    <Content Include="Views\Kitap\KitapGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
