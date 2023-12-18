@@ -341,6 +341,10 @@
     <Content Include="Views\Yazar\YazarGetir.cshtml" />
     <Content Include="Views\Kitap\YeniKitap.cshtml" />
     <Content Include="Views\Kitap\KitapGetir.cshtml" />
+    <Content Include="Views\Personel\YeniPersonel.cshtml" />
+    <Content Include="Views\Personel\PersonelGetir.cshtml" />
+    <Content Include="Views\Uye\YeniUye.cshtml" />
+    <Content Include="Views\Uye\UyeGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

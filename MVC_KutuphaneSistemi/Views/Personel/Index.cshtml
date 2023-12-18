@@ -16,7 +16,6 @@
             <thead>
                 <tr>
                     <th>PERSONEL ADI</th>
-                    <th>HAREKETLER</th>
                     <th>DURUM</th>
                     <th>İŞLEMLER</th>
                 </tr>
@@ -25,7 +24,7 @@
                 @foreach (var personeller in Model)
                 {
                     <tr>
-                        <td>@personeller.Ad</td>
+                        <td>@personeller.Ad @personeller.Soyad</td>
                         <td style="color: @(personeller.Durum.HasValue && personeller.Durum.Value ? "green" : "red")">
                             @(personeller.Durum.HasValue ? (personeller.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
                         </td>

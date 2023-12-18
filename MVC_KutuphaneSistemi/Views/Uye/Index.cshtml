@@ -1,13 +1,13 @@
 ﻿@using MVC_KutuphaneSistemi.Models.Entity
 @model List<Uyeler>
 @{
-    ViewBag.Title = "Uyeler";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="card">
     <div class="card-header">
-        <h2 class="mb-5"><b>Üyeler / </b>Üye Listesi</h2>
+        <h2 class="mb-5"><b>Uyeler / </b>Uye Listesi</h2>
         <br />
     </div>
 
@@ -15,27 +15,25 @@
         <table id="DataTable" class="table table-hover" style="width:100%">
             <thead>
                 <tr>
-                    <th>ÜYE ADI</th>
-                    <th>ÜYE SOYADI</th>
-                    <th>E-POSTA</th>
+                    <th>FOTOĞRAF</th>
+                    <th>UYE ADI</th>
                     <th>DURUM</th>
                     <th>İŞLEMLER</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var uye in Model)
+                @foreach (var uyeler in Model)
                 {
                     <tr>
-                        <td>@uye.Ad</td>
-                        <td>@uye.Soyad</td>
-                        <td>@uye.Mail</td>
-                        <td style="color: @(uye.Durum.HasValue && uye.Durum.Value ? "green" : "red")">
-                            @(uye.Durum.HasValue ? (uye.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                        <td> <img src="@uyeler.Fotograf" alt="Fotoğraf" /></td>
+                        <td>@uyeler.Ad @uyeler.Soyad</td>
+                        <td style="color: @(uyeler.Durum.HasValue && uyeler.Durum.Value ? "green" : "red")">
+                            @(uyeler.Durum.HasValue ? (uyeler.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
                         </td>
                         <td>
-                            <a href="/Uye/UyeSil/@uye.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
-                            <a href="/Uye/UyeGetir/@uye.ID" class="btn btn-primary">GÜNCELLE</a>
-                            <a href="/Uye/DetayGör/@uye.ID" class="btn btn-warning">DETAY</a>
+                            <a href="/Uye/UyeSil/@uyeler.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                            <a href="/Uye/UyeGetir/@uyeler.ID" class="btn btn-primary">GÜNCELLE</a>
+                            <a href="/Uye/DetayGör/@uyeler.ID" class="btn btn-warning">DETAY</a>
                         </td>
                     </tr>
                 }
@@ -45,8 +43,10 @@
 
     <div class="card-footer">
         <br />
-        <a href="Uye/YeniUye/" class="btn btn-warning">Yeni Üye Ekle</a>
+        <a href="/Uye/YeniUye/" class="btn btn-warning">Yeni Uye Ekle</a>
     </div>
 </div>
+
+
 
 

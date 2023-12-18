@@ -1,0 +1,43 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Personeller
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Personeller / </b>Personel Güncelle</h2>
+        <br />
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+        {
+            <div class="card-body">
+                @Html.HiddenFor(k => k.ID)
+                <BR />
+                <label>Personel Ad:</label>
+                @Html.TextBoxFor(k => k.Ad, new { @class = "form-control" })
+                <br />
+                <label>Personel Soyad:</label>
+                @Html.TextBoxFor(k => k.Soyad, new { @class = "form-control" })
+                <br />
+                <label>Personel Durum:</label>
+                @Html.DropDownListFor(k => k.Durum, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "AKTİF", Value = "true" },
+                    new SelectListItem { Text = "PASİF", Value = "false" }
+                }, new { @class = "form-control" })
+
+
+            </div>
+
+            <div class="card-footer">
+                <br />
+                <a href="/Personel/Index/" class="btn btn-danger">Vazgeç</a>
+                <button class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+    </div>
+</div>
+
