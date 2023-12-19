@@ -89,6 +89,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             Kitap.BasimYili = y.BasimYili;
             Kitap.YayinEvi = y.YayinEvi;
             Kitap.SayfaSayisi = y.SayfaSayisi;
+            Kitap.Fotograf = y.Fotograf;
             Kitap.Durum = y.Durum;
             var kategori = db.Kategoriler.Where(k => k.ID == y.Kategoriler.ID).FirstOrDefault();
             var yazar = db.Kategoriler.Where(k => k.ID == y.Yazarlar.ID).FirstOrDefault();

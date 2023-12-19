@@ -36,6 +36,8 @@ namespace MVC_KutuphaneSistemi.Models.Entity
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Uyeler> Uyeler { get; set; }
         public virtual DbSet<Yazarlar> Yazarlar { get; set; }
+        public virtual DbSet<Hakkimizda> Hakkimizda { get; set; }
+        public virtual DbSet<Iletisim> Iletisim { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

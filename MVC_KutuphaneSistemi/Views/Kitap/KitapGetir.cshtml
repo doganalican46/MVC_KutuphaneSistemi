@@ -13,36 +13,39 @@
     <div class="form-group">
         @using (Html.BeginForm("KitapGuncelle", "Kitap", FormMethod.Post))
         {
-        <div class="card-body">
-            @Html.HiddenFor(k => k.ID)
-            <BR />
-            <label>Kitap Adı:</label>
-            @Html.TextBoxFor(k => k.Ad, new { @class = "form-control" })
-            <br />
-            <label>Kitap Kategorisi:</label>
-            @Html.DropDownListFor(k => k.Kategoriler.ID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
-            <br />
-            <label>Kitap Yazarı:</label>
-            @Html.DropDownListFor(k => k.Yazarlar.ID, (List<SelectListItem>)ViewBag.yazarlar, new { @class = "form-control" })
-            <br />
-            <label>Basım Yılı:</label>
-            @Html.TextBoxFor(k => k.BasimYili, new { @class = "form-control" })
-            <br />
-            <label>Yayın Evi:</label>
-            @Html.TextBoxFor(k => k.YayinEvi, new { @class = "form-control" })
-            <br />
-            <label>Sayfa Sayısı:</label>
-            @Html.TextBoxFor(k => k.SayfaSayisi, new { @class = "form-control" })
-            <br />
-            <label>Kitap Durum:</label>
-            @Html.DropDownListFor(k => k.Durum, new List<SelectListItem>
-            {
-                new SelectListItem { Text = "AKTİF", Value = "true" },
-                new SelectListItem { Text = "PASİF", Value = "false" }
-            }, new { @class = "form-control" })
+            <div class="card-body">
+                @Html.HiddenFor(k => k.ID)
+                <BR />
+                <label>Kitap Adı:</label>
+                @Html.TextBoxFor(k => k.Ad, new { @class = "form-control" })
+                <br />
+                <label>Kitap Kategorisi:</label>
+                @Html.DropDownListFor(k => k.Kategoriler.ID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+                <br />
+                <label>Kitap Yazarı:</label>
+                @Html.DropDownListFor(k => k.Yazarlar.ID, (List<SelectListItem>)ViewBag.yazarlar, new { @class = "form-control" })
+                <br />
+                <label>Basım Yılı:</label>
+                @Html.TextBoxFor(k => k.BasimYili, new { @class = "form-control" })
+                <br />
+                <label>Yayın Evi:</label>
+                @Html.TextBoxFor(k => k.YayinEvi, new { @class = "form-control" })
+                <br />
+                <label>Sayfa Sayısı:</label>
+                @Html.TextBoxFor(k => k.SayfaSayisi, new { @class = "form-control" })
+                <br />
+                <label>Fotoğraf:</label>
+                @Html.TextBoxFor(k => k.Fotograf, new { @class = "form-control" })
+                <br />
+                <label>Kitap Durum:</label>
+                @Html.DropDownListFor(k => k.Durum, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "AKTİF", Value = "true" },
+                    new SelectListItem { Text = "PASİF", Value = "false" }
+                }, new { @class = "form-control" })
 
 
-        </div>
+            </div>
 
             <div class="card-footer">
                 <br />

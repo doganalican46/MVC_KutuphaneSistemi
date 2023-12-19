@@ -16,6 +16,13 @@
           <Property Name="Bitis" Type="smalldatetime" />
           <Property Name="Para" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Hareketler">
           <Key>
             <PropertyRef Name="ID" />
@@ -28,6 +35,16 @@
           <Property Name="IadeTarihi" Type="smalldatetime" />
           <Property Name="UyeninGetirdigiTarih" Type="smalldatetime" />
           <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mesaj" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Kasalar">
           <Key>
@@ -56,6 +73,7 @@
           <Property Name="BasimYili" Type="char" MaxLength="4" />
           <Property Name="YayinEvi" Type="nvarchar" MaxLength="100" />
           <Property Name="SayfaSayisi" Type="nvarchar" MaxLength="4" />
+          <Property Name="Fotograf" Type="nvarchar" MaxLength="500" />
           <Property Name="Durum" Type="bit" />
         </EntityType>
         <EntityType Name="Personeller">
@@ -219,7 +237,9 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DBKutuphaneModelStoreContainer">
           <EntitySet Name="Cezalar" EntityType="Self.Cezalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hakkimizda" EntityType="Self.Hakkimizda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hareketler" EntityType="Self.Hareketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iletisim" EntityType="Self.Iletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kasalar" EntityType="Self.Kasalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" Schema="dbo" store:Type="Tables" />
@@ -322,6 +342,7 @@
           <NavigationProperty Name="Hareketler" Relationship="Self.FK_Hareketler_Kitaplar" FromRole="Kitaplar" ToRole="Hareketler" />
           <NavigationProperty Name="Kategoriler" Relationship="Self.FK_Kitaplar_Kategoriler" FromRole="Kitaplar" ToRole="Kategoriler" />
           <NavigationProperty Name="Yazarlar" Relationship="Self.FK_Kitaplar_Yazarlar" FromRole="Kitaplar" ToRole="Yazarlar" />
+          <Property Name="Fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Personeller">
           <Key>
@@ -523,6 +544,8 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Hakkimizda" EntityType="DBKutuphaneModel.Hakkimizda" />
+          <EntitySet Name="Iletisim" EntityType="DBKutuphaneModel.Iletisim" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -535,6 +558,23 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -588,6 +628,7 @@
           <EntitySetMapping Name="Kitaplar">
             <EntityTypeMapping TypeName="DBKutuphaneModel.Kitaplar">
               <MappingFragment StoreEntitySet="Kitaplar">
+                <ScalarProperty Name="Fotograf" ColumnName="Fotograf" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
                 <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
@@ -671,6 +712,25 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBKutuphaneModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBKutuphaneModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Hakkimizda">
+            <EntityTypeMapping TypeName="DBKutuphaneModel.Hakkimizda">
+              <MappingFragment StoreEntitySet="Hakkimizda">
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iletisim">
+            <EntityTypeMapping TypeName="DBKutuphaneModel.Iletisim">
+              <MappingFragment StoreEntitySet="Iletisim">
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

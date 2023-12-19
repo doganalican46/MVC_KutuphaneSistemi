@@ -137,6 +137,7 @@
     <Compile Include="Controllers\OduncController.cs" />
     <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\UyeController.cs" />
+    <Compile Include="Controllers\VitrinController.cs" />
     <Compile Include="Controllers\YazarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,7 +145,13 @@
     <Compile Include="Models\Entity\Cezalar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\Hakkimizda.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\Hareketler.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Iletisim.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Kasalar.cs">
@@ -189,6 +196,7 @@
     <Compile Include="Models\Entity\Yazarlar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Siniflar\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +228,7 @@
     <Content Include="web\img\BirYilbasiOykusu.jpg" />
     <Content Include="web\img\droxdeney.jpg" />
     <Content Include="web\img\kasagi.jpg" />
+    <Content Include="web\img\kutuphane.jpg" />
     <Content Include="web\img\library.png" />
     <Content Include="web\img\library3.jpg" />
     <Content Include="web\img\portfolio\cabin.png" />
@@ -351,6 +360,7 @@
     <Content Include="Views\Odunc\Index.cshtml" />
     <Content Include="Views\Odunc\OduncAl.cshtml" />
     <Content Include="Views\Islem\Index.cshtml" />
+    <Content Include="Views\Vitrin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
