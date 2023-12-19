@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/web2/js/Chart1.js"></script>
+<script src="~/web2/js/jquery.min.js"></script>
+<link href="~/web2/css/style.css" rel="stylesheet" />
+<script src="~/web2/js/main.js"></script>
+
+<script src="~/web2/js/jquery.vmap.js"></script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: '#333333',
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#C8EEFF', '#006491'],
+            normalizeFunction: 'polynomial'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.alert-close6').on('click', function (c) {
+            $('.world-map').fadeOut('slow', function (c) {
+                $('.world-map').remove();
+            });
+        });
+    });
+</script>
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>İstatislik / </b>İstatislik Sayfası</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <div class="list_of_members">
+            <div class="sales">
+                <div class="icon">
+                    <i class="dollar"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.CezaTutari ₺</h3>
+                    <p>Kasadaki Tutar</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="new-users">
+                <div class="icon">
+                    <i class="user1"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.uyeSayisi</h3>
+                    <p>Üye Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="orders">
+                <div class="icon">
+                    <i class="order"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.kitapSayisi</h3>
+                    <p>Kitap Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="visitors">
+                <div class="icon">
+                    <i class="visit"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.oduncKitapSayisi</h3>
+                    <p>Emanet Kitaplar</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="total-sales">
+            <div class="user-trends">
+                <div class="alert-close7"> </div>
+
+                <canvas id="bar" height="340" width="780"></canvas>
+                <script>
+
+                    var barChartData = {
+                        labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"],
+                        datasets: [
+                            {
+                                fillColor: "rgba(255, 137, 167, 0.78)",
+                                strokeColor: "rgba(220,220,220,1)",
+                                data: [65, 59, 90, 81, 56, 55, 40]
+                            },
+                            {
+                                fillColor: "rgba(140, 145, 255, 0.69)",
+                                strokeColor: "rgba(151,187,205,1)",
+                                data: [28, 48, 40, 19, 96, 27, 100]
+                            }
+                        ]
+
+                    }
+
+                    var myLine = new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+
+                </script>
+            </div>
+            <div class="to-do">
+                <div class="alert-close5"> </div>
+                <h3>Yapılacaklar Listesi</h3>
+                <div class="checkbox-form">
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Do the dishes.</label>
+                    </div>
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Hit the gym.</label>
+                    </div>
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Walk the dog.</label>
+                    </div>
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Get wireframing!</label>
+                    </div>
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Talk to the cat.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+        
+    </div>
+
+ 
+</div>
+
+
+
+

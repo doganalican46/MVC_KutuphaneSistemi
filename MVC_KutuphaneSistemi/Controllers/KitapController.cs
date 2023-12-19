@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,14 +41,17 @@ namespace MVC_KutuphaneSistemi.Controllers
 
             return View();
         }
+ 
 
         [HttpPost]
         public ActionResult YeniKitap(Kitaplar y)
         {
+
             var kategori = db.Kategoriler.Where(k => k.ID == y.Kategoriler.ID).FirstOrDefault();
             var yazar = db.Yazarlar.Where(k => k.ID == y.Yazarlar.ID).FirstOrDefault();
             y.Kategoriler = kategori;
             y.Yazarlar = yazar;
+
             db.Kitaplar.Add(y);
             db.SaveChanges();
             return RedirectToAction("Index");

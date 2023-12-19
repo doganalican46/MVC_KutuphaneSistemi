@@ -31,9 +31,15 @@ namespace MVC_KutuphaneSistemi.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult OduncAl(int id)
+        public ActionResult OduncAl(Hareketler p)
         {
-            var OduncAl = db.Hareketler.Find(id);
+            var OduncAl = db.Hareketler.Find(p.ID);
+            DateTime normaldeVerilmesiGerekenTarih = DateTime.Parse(OduncAl.IadeTarihi.ToString());
+            DateTime getirilentarih = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            TimeSpan gecikilenGunSayisi = normaldeVerilmesiGerekenTarih - getirilentarih;
+
+
+            ViewBag.gecikmeSayisi = gecikilenGunSayisi.TotalDays;
             return View("OduncAl", OduncAl);
         }
 

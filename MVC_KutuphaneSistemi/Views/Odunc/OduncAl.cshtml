@@ -18,7 +18,7 @@
             @Html.HiddenFor(k => k.ID)
             <BR />
             <label>Kitap Adı:</label>
-            @Html.TextBoxFor(k => k.Kitaplar.Ad, new { @class = "form-control" })
+            @Html.TextBoxFor(k => k.Kitaplar.Ad, new { @class = "form-control", @required = "" })
             <br />
             <label>Üye Adı:</label>
             @Html.TextBoxFor(k => k.Uyeler.Ad , new { @class = "form-control" })
@@ -35,7 +35,8 @@
             <label>Üyenin Getirdiği Tarih:</label>
             <input type="text" name="UyeninGetirdigiTarih" value="@DateTime.Now.ToShortDateString()" class="form-control" />
             <br />
-
+            <label  > Geciken Gün Sayısı:</label>
+            <input type="text" class="form-control" id="GecInput"  value="@ViewBag.gecikmeSayisi" />
 
         </div>
 
