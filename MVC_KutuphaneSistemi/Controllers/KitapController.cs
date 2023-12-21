@@ -23,25 +23,26 @@ namespace MVC_KutuphaneSistemi.Controllers
         [HttpGet]
         public ActionResult YeniKitap()
         {
-            List<SelectListItem> kategoriler = (from i in db.Kategoriler.ToList()
-                                             select new SelectListItem
-                                             {
-                                                 Text = i.Ad,
-                                                 Value = i.ID.ToString()
-                                             }).ToList();
-            ViewBag.kategoriler = kategoriler;
-
-            List<SelectListItem> yazarlar = (from i in db.Yazarlar.ToList()
+            List<SelectListItem> kategoriler = (from i in db.Kategoriler.Where(k => k.Durum == true).ToList()
                                                 select new SelectListItem
                                                 {
-                                                    Text = i.Ad+" "+i.Soyad,
+                                                    Text = i.Ad,
                                                     Value = i.ID.ToString()
                                                 }).ToList();
+            ViewBag.kategoriler = kategoriler;
+
+            List<SelectListItem> yazarlar = (from i in db.Yazarlar.Where(y => y.Durum == true).ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.Ad + " " + i.Soyad,
+                                                 Value = i.ID.ToString()
+                                             }).ToList();
             ViewBag.yazarlar = yazarlar;
+
 
             return View();
         }
- 
+
 
         [HttpPost]
         public ActionResult YeniKitap(Kitaplar y)
@@ -57,6 +58,10 @@ namespace MVC_KutuphaneSistemi.Controllers
             return RedirectToAction("Index");
         }
 
+       
+        
+
+
         public ActionResult KitapSil(int id)
         {
             var Kitap = db.Kitaplar.Find(id);
@@ -64,6 +69,10 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+ 
+
+
 
         public ActionResult KitapGetir(int id)
         {
@@ -103,6 +112,24 @@ namespace MVC_KutuphaneSistemi.Controllers
 
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult KitapDetay(int id)
+        {
+            var kitap = db.Kitaplar.Find(id);
+            var hareketler = db.Hareketler.Where(h => h.KitapID == kitap.ID).ToList();
+
+            ViewBag.kitapad = kitap.Ad;
+            ViewBag.kitapfotograf = kitap.Fotograf;
+            ViewBag.sayfasayisi = kitap.SayfaSayisi;
+            ViewBag.yayinevi = kitap.YayinEvi;
+            ViewBag.KitapID = kitap.ID;
+            var okunmaSayisi = db.Hareketler.Count(h => h.KitapID == kitap.ID);
+            ViewBag.okunmaSayisi = okunmaSayisi;
+
+
+            return View("KitapDetay", hareketler);
         }
     }
 }

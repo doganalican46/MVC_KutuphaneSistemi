@@ -54,5 +54,22 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public class PersonelDetayViewModel
+        {
+            public Personeller Personel { get; set; }
+            public List<Hareketler> Hareketler { get; set; }
+        }
+
+        public ActionResult PersonelDetay(int id)
+        {
+            var personel = db.Personeller.Find(id);
+            var hareketler = db.Hareketler.Where(h => h.PersonelID == personel.ID).ToList();
+
+            ViewBag.personeladsoyad = personel.Ad + " " + personel.Soyad;
+            //ViewBag.personelfotograf = personel.Fotograf;
+            return View("PersonelDetay", hareketler);
+        }
+
+
     }
 }

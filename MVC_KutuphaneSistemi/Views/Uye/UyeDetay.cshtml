@@ -1,0 +1,82 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "UyeDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Üyeler / </b>Üye Detay</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Üye Bilgileri</h3><br />
+                <img src="@ViewBag.uyefotograf" alt="Üye Fotoğraf" width="200px" height="300px" />
+                <br /> <br />
+                <p><strong>Adı Soyadı:</strong> @ViewBag.uyeadsoyad  </p>
+                <p><strong>Toplam Kitap:</strong> @ViewBag.toplamkitap </p>
+                <p><strong>Toplam Ceza:</strong> @ViewBag.toplamPara ₺ </p>
+
+            </div>
+
+            <div class="col-md-8">
+                <h3>İşlem Geçmişi</h3><br />
+                @if (Model.Any())
+                {
+                    <table id="DataTable" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>İşlem No</th>
+                                <th>Personel Adı</th>
+                                <th>Kitap Adı</th>
+                                <th>Alış Tarihi</th>
+                                <th>İade Tarihi</th>
+                                <th>Ceza Tutarı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var hareket in Model)
+                            {
+                                <tr>
+                                    <td>@hareket.ID</td>
+                                    <td>@hareket.Personeller.Ad @hareket.Personeller.Soyad</td>
+                                    <td>@hareket.Kitaplar.Ad </td>
+                                    <td>@Convert.ToDateTime(hareket.AlisTarihi).ToString("dd/MM/yyyy")</td>
+                                    <td>@Convert.ToDateTime(hareket.UyeninGetirdigiTarih).ToString("dd/MM/yyyy")</td>
+                                    <td> - ₺ </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Üyenin işlemi yoktur.</p>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <br />
+        <a href="/Uye/Index/" class="btn btn-danger">Geri Dön</a>
+        <a href="/Uye/UyeGetir/@ViewBag.UyeID" class="btn btn-primary">Düzenle</a>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

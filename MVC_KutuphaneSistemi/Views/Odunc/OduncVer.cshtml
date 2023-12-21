@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2 class="mb-5"><b>Odünç İşlemleri / </b>Ödünç Kitap Ver</h2>
+        <h2 class="mb-5"><b>Ödünç İşlemleri / </b>Ödünç Kitap Ver</h2>
         <br />
     </div>
     <form method="post" class="form-group">
@@ -17,8 +17,8 @@
             <label>Kitap ID:</label>
             @Html.TextBoxFor(k => k.KitapID, new { @class = "form-control" })
             <br />
-            <label>Personel ID:</label>
-            @Html.TextBoxFor(k => k.PersonelID, new { @class = "form-control" })
+            <label>Personel:</label>
+            @Html.DropDownListFor(k => k.PersonelID, (List<SelectListItem>)ViewBag.personeller, new { @class = "form-control" })
             <br />
             <label>Alış Tarihi:</label>
             <input type="text" name="AlisTarihi" value="@DateTime.Now.ToShortDateString()" class="form-control" />

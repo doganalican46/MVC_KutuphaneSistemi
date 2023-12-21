@@ -1,0 +1,78 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "PersonelDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Personeller / </b>Personel Detay</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Personel Bilgileri</h3><br />
+                <img src="@*@ViewBag.personelfotograf*@" alt="Personel Fotoğraf" />
+                <br /> <br />
+                <p><strong>Adı Soyadı:</strong> @ViewBag.personeladsoyad  </p>
+                <p><strong>Departman:</strong> - </p>
+                <p><strong>Pozisyon:</strong> - </p>
+
+            </div>
+
+            <div class="col-md-8">
+                <h3>İşlem Geçmişi</h3><br />
+                @if (Model.Any())
+                {
+                    <table id="DataTable" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>İşlem No</th>
+                                <th>Üye Adı</th>
+                                <th>Kitap Adı</th>
+                                <th>Alış Tarihi</th>
+                                <th>İade Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var hareket in Model)
+                            {
+                                <tr>
+                                    <td>@hareket.ID</td>
+                                    <td>@hareket.Uyeler.KullaniciAdi</td>
+                                    <td>@hareket.Kitaplar.Ad </td>
+                                    <td>@Convert.ToDateTime(hareket.AlisTarihi).ToString("dd/MM/yyyy")</td>
+                                    <td>@Convert.ToDateTime(hareket.UyeninGetirdigiTarih).ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Personelin işlemi yoktur.</p>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <br />
+        <a href="/Personel/Index/" class="btn btn-primary">Geri Dön</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

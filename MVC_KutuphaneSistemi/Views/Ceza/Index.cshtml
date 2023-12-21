@@ -16,27 +16,25 @@
             <thead>
                 <tr>
                     <th>ÜYE ADI</th>
-                    <th>CEZA TÜRÜ</th>
+                    <th>İŞLEM NO</th>
+                    <th>GECİKEN GÜN SAYISI</th>
                     <th>TUTAR</th>
-                    <th>DURUM</th>
-                    <th>İŞLEMLER</th>
+                    @*<th>DURUM</th>*@
+                    <th>İŞLEM</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var ceza in Model)
                 {
                     <tr>
-                        <td>@ceza.Uye.Ad</td>
-                        <td>@ceza.CezaTuru</td>
-                        <td>@ceza.Tutar</td>
-                        <td style="color: @(ceza.Durum.HasValue && ceza.Durum.Value ? "green" : "red")">
-                            @(ceza.Durum.HasValue ? (ceza.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
-                        </td>
-                        <td>
-                            <a href="/Cezalar/CezaSil/@ceza.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
-                            <a href="/Cezalar/CezaGetir/@ceza.ID" class="btn btn-primary">GÜNCELLE</a>
-                            <a href="/Cezalar/DetayGör/@ceza.ID" class="btn btn-warning">DETAY</a>
-                        </td>
+                        <td>@ceza.Uyeler.Ad</td>
+                        <td>@ceza.HareketID</td>
+                        <td>@Convert.ToInt32(ceza.Para)</td>
+                        <td>@ceza.Para ₺</td>
+                        @*<td style="color: @(ceza.Durum.HasValue && ceza.Durum.Value ? "green" : "red")">
+                                @(ceza.Durum.HasValue ? (ceza.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
+                            </td>*@
+                        <td>  </td>
                     </tr>
                 }
             </tbody>
@@ -45,6 +43,6 @@
 
     <div class="card-footer">
         <br />
-        <a href="Cezalar/YeniCeza/" class="btn btn-warning">Yeni Ceza Ekle</a>
+        <a href="/Odunc/OduncVer/" class="btn btn-warning">Ödünç Kitap Ver</a>
     </div>
 </div>

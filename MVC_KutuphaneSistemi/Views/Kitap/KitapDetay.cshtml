@@ -1,0 +1,79 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "UyeDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kitaplar / </b>Kitap Detay</h2>
+        <br />
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Kitap Bilgileri</h3><br />
+                <img src="@ViewBag.kitapfotograf" alt="Kitap Fotoğraf" width="200px" height="300px" />
+                <br /> <br />
+                <p><strong>Kitap Adı:</strong> @ViewBag.kitapad </p>
+                <p><strong>Sayfa Sayısı:</strong> @ViewBag.sayfasayisi </p>
+                <p><strong>Yayınevi:</strong> @ViewBag.yayinevi </p>
+                <p><strong>Okunma Sayısı:</strong> @ViewBag.okunmaSayisi </p>
+            </div>
+
+            <div class="col-md-8">
+                <h3>İşlem Geçmişi</h3><br />
+                @if (Model.Any())
+                {
+                    <table id="DataTable" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>İşlem No</th>
+                                <th>Üye Adı</th>
+                                <th>Alış Tarihi</th>
+                                <th>İade Tarihi</th>
+                                <th>Ceza Tutarı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var hareket in Model)
+                            {
+                                <tr>
+                                    <td>@hareket.ID</td>
+                                    <td>@hareket.Uyeler.Ad @hareket.Uyeler.Soyad</td>
+                                    <td>@Convert.ToDateTime(hareket.AlisTarihi).ToString("dd/MM/yyyy")</td>
+                                    <td>@Convert.ToDateTime(hareket.UyeninGetirdigiTarih).ToString("dd/MM/yyyy")</td>
+                                    <td> - ₺ </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Kitabın işlemi yoktur.</p>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <br />
+        <a href="/Kitap/Index/" class="btn btn-danger">Geri Dön</a>
+        <a href="/Kitap/KitapGetir/@ViewBag.KitapID" class="btn btn-primary">Düzenle</a>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

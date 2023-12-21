@@ -403,6 +403,9 @@
     <Content Include="Views\Islem\Index.cshtml" />
     <Content Include="Views\Vitrin\Index.cshtml" />
     <Content Include="Views\Istatislik\Index.cshtml" />
+    <Content Include="Views\Personel\PersonelDetay.cshtml" />
+    <Content Include="Views\Uye\UyeDetay.cshtml" />
+    <Content Include="Views\Kitap\KitapDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

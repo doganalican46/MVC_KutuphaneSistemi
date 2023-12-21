@@ -53,13 +53,33 @@ namespace MVC_KutuphaneSistemi.Controllers
             Uye.Ad = k.Ad;
             Uye.Soyad = k.Soyad;
             Uye.Mail = k.Mail;
-            Uye.Telefon= k.Telefon;
+            Uye.Telefon = k.Telefon;
             Uye.OkulAdi = k.OkulAdi;
             Uye.KullaniciAdi = k.KullaniciAdi;
-            Uye.Fotograf= k.Fotograf;
+            Uye.Fotograf = k.Fotograf;
             Uye.Durum = k.Durum;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UyeDetay(int id)
+        {
+            var uye = db.Uyeler.Find(id);
+            var hareketler = db.Hareketler.Where(h => h.UyeID == uye.ID).ToList();
+
+            ViewBag.uyeadsoyad = uye.Ad + " " + uye.Soyad;
+            ViewBag.uyefotograf = uye.Fotograf;
+            ViewBag.UyeID = uye.ID;
+
+            var toplamKitap = db.Hareketler.Count(h => h.UyeID == uye.ID);
+            ViewBag.toplamkitap = toplamKitap;
+
+            var toplamPara = db.Cezalar.Where(c => c.UyeID == uye.ID).Sum(c => c.Para);
+            ViewBag.toplamPara = toplamPara;
+
+
+            return View("UyeDetay", hareketler);
+
         }
     }
 }

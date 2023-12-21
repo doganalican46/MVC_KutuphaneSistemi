@@ -20,6 +20,13 @@ namespace MVC_KutuphaneSistemi.Controllers
         [HttpGet]
         public ActionResult OduncVer()
         {
+            List<SelectListItem> personeller = (from i in db.Personeller.Where(k => k.Durum == true).ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = i.Ad,
+                                                    Value = i.ID.ToString()
+                                                }).ToList();
+            ViewBag.personeller = personeller;
             return View();
         }
 

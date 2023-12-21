@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2 class="mb-5"><b>Uyeler / </b>Uye Listesi</h2>
+        <h2 class="mb-5"><b>Üyeler / </b>Üye Listesi</h2>
         <br />
     </div>
 
@@ -25,7 +25,7 @@
                 @foreach (var uyeler in Model)
                 {
                     <tr>
-                        <td> <img src="@uyeler.Fotograf" alt="Fotoğraf" /></td>
+                        <td> <img src="@uyeler.Fotograf" alt="Fotoğraf" width="50px" height="50px" /></td>
                         <td>@uyeler.Ad @uyeler.Soyad</td>
                         <td style="color: @(uyeler.Durum.HasValue && uyeler.Durum.Value ? "green" : "red")">
                             @(uyeler.Durum.HasValue ? (uyeler.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
@@ -33,7 +33,7 @@
                         <td>
                             <a href="/Uye/UyeSil/@uyeler.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
                             <a href="/Uye/UyeGetir/@uyeler.ID" class="btn btn-primary">GÜNCELLE</a>
-                            <a href="/Uye/DetayGör/@uyeler.ID" class="btn btn-warning">DETAY</a>
+                            <a href="/Uye/UyeDetay/@uyeler.ID" class="btn btn-success">DETAY</a>
                         </td>
                     </tr>
                 }
