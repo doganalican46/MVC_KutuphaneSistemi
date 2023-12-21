@@ -45,6 +45,7 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="100" />
           <Property Name="Konu" Type="nvarchar" MaxLength="100" />
           <Property Name="Mesaj" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="date" />
         </EntityType>
         <EntityType Name="Kasalar">
           <Key>
@@ -574,6 +575,7 @@
           <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -723,6 +725,7 @@
           <EntitySetMapping Name="Iletisim">
             <EntityTypeMapping TypeName="DBKutuphaneModel.Iletisim">
               <MappingFragment StoreEntitySet="Iletisim">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />

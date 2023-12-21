@@ -128,8 +128,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AyarController.cs" />
     <Compile Include="Controllers\CezaController.cs" />
     <Compile Include="Controllers\HareketController.cs" />
+    <Compile Include="Controllers\IletisimController.cs" />
     <Compile Include="Controllers\IslemController.cs" />
     <Compile Include="Controllers\IstatislikController.cs" />
     <Compile Include="Controllers\KasaController.cs" />
@@ -406,6 +408,9 @@
     <Content Include="Views\Personel\PersonelDetay.cshtml" />
     <Content Include="Views\Uye\UyeDetay.cshtml" />
     <Content Include="Views\Kitap\KitapDetay.cshtml" />
+    <Content Include="Views\Ayar\Index.cshtml" />
+    <Content Include="Views\Ayar\HakkimizdaGetir.cshtml" />
+    <Content Include="Views\Iletisim\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

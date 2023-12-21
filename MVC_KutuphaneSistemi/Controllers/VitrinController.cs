@@ -28,6 +28,7 @@ namespace MVC_KutuphaneSistemi.Controllers
         public ActionResult Index(Iletisim i)
         {
             db.Iletisim.Add(i);
+            i.Tarih = DateTime.Now; 
             db.SaveChanges();
             return RedirectToAction("Index");
         }

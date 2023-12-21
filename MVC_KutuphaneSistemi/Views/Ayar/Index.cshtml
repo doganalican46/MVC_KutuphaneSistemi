@@ -1,0 +1,50 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hakkimizda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Ayarlar / </b>Hakkımızda Ayarları</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <table id="DataTable" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>HAKKIMIZDA AÇIKLAMASI</th>
+                        <th>İŞLEMLER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var hakkimizda in Model)
+                    {
+                        <tr>
+                            <td>@hakkimizda.Aciklama</td>
+                            <td>
+                                <a href="/Ayar/HakkimizdaGetir/@hakkimizda.ID" class="btn btn-primary">DÜZENLE</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Hakkımızda yazısı bulunamadı.</p>
+        }
+    </div>
+
+    <div class="card-footer">
+        <br />
+        
+    </div>
+</div>
+
+
+

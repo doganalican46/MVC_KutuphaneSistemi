@@ -1,0 +1,32 @@
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Hakkimizda
+@{
+    ViewBag.Title = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Ayarlar / </b>Hakkımızda Güncelle</h2>
+        <br />
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm("HakkimizdaGuncelle", "Ayar", FormMethod.Post))
+        {
+            <div class="card-body">
+                @Html.HiddenFor(k => k.ID)
+                <BR />
+                <label>Açıklama:</label>
+                @Html.TextAreaFor(k => k.Aciklama, new { @class = "form-control" })
+
+            </div>
+
+            <div class="card-footer">
+                <br />
+                <a href="/Ayar/Index/" class="btn btn-danger">Vazgeç</a>
+                <button class="btn btn-primary">Güncelle</button>
+            </div>
+        }
+    </div>
+</div>
+
