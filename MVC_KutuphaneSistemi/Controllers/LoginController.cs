@@ -11,20 +11,20 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Login
-
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult GirisYap()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(Uyeler u)
+        public ActionResult GirisYap(Uyeler u)
         {
             var bilgiler = db.Uyeler.FirstOrDefault(x => x.Mail == u.Mail && x.Sifre == u.Sifre);
             if (bilgiler != null)
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.Mail, false);
-                return RedirectToAction("Index","User");
+                return RedirectToAction("Deneme","User");
             }
             else
             {

@@ -33,7 +33,7 @@
     <h1>KÜTÜPHANE SİSTEMİ GİRİŞ EKRANI</h1>
     <div class=" w3l-login-form">
         <h2>Giriş Yap</h2>
-        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+        @using (Html.BeginForm("GirisYap", "Login", FormMethod.Post))
         {
             <div class=" w3l-form-group">
                 <label>Mail:</label>
@@ -46,7 +46,7 @@
                 <label>Şifre:</label>
                 <div class="group">
                     <i class="fas fa-unlock"></i>
-                    <input type="password" class="form-control" placeholder="Şifre" name="Sifre" required="required" />
+                    <input type="password" class="form-control" placeholder="Sifre" name="Sifre" required="required" />
                 </div>
             </div>
             <div class="forgot">

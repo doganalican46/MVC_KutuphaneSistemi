@@ -15,5 +15,12 @@ namespace MVC_KutuphaneSistemi.Controllers
         {
             return View();
         }
+
+        [Authorize]
+
+        public ActionResult Deneme()
+        {
+            return View();
+        }
     }
 }
