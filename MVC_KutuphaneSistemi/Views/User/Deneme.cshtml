@@ -1,8 +1,68 @@
-﻿
+﻿@model MVC_KutuphaneSistemi.Models.Entity.Uyeler
 @{
     ViewBag.Title = "Deneme";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Deneme</h2>
+<h2 class="mt-4">Profil / Bilgilerim</h2>
 
+
+
+@using (Html.BeginForm("Deneme", "User", FormMethod.Post))
+{
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <label> <b> Ad: </b> </label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Soyad: </b> </label>
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Mail: </b> </label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Telefon: </b> </label>
+                @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Kullanıcı Ad: </b> </label>
+                @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Şifre: </b> </label>
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Okul Ad: </b> </label>
+                @Html.TextBoxFor(x => x.OkulAdi, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> <b> Fotograf: </b> </label>
+                <img src="" alt="Alternate Text" />
+                @Html.TextBoxFor(x => x.Fotograf, new { @class = "form-control" })
+            </td>
+        </tr>
+
+    </table>
+
+    <button class="btn btn-warning">Güncelle</button>
+
+}

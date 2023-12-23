@@ -17,10 +17,33 @@ namespace MVC_KutuphaneSistemi.Controllers
         }
 
         [Authorize]
-
+        [HttpGet]
         public ActionResult Deneme()
         {
+            var uyemail = (string)Session["Mail"];
+            var degerler = db.Uyeler.FirstOrDefault(z => z.Mail == uyemail);
+            return View(degerler);
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Deneme(Uyeler u)
+        {
+            var kullanici = (string)Session["Mail"];
+            var uye = db.Uyeler.FirstOrDefault(x=>x.Mail==kullanici);
+            uye.Sifre = u.Sifre;
+            uye.Ad = u.Ad;
+            uye.Soyad = u.Soyad;
+            uye.Fotograf = u.Fotograf;
+            uye.KullaniciAdi = u.KullaniciAdi;
+            uye.OkulAdi = u.OkulAdi;
+            uye.Telefon = u.Telefon;
+
+            db.SaveChanges();
             return View();
         }
+
+
     }
 }
