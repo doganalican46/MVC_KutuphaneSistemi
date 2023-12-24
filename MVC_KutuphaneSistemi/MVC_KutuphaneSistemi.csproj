@@ -138,6 +138,7 @@
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KitapController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MesajController.cs" />
     <Compile Include="Controllers\OduncController.cs" />
     <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -166,6 +167,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Kitaplar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Mesajlar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Model1.Context.cs">
@@ -477,6 +481,9 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Login\GirisYap.cshtml" />
     <Content Include="Views\User\Deneme.cshtml" />
+    <Content Include="Views\Mesaj\Index.cshtml" />
+    <Content Include="Views\Mesaj\YeniMesaj.cshtml" />
+    <Content Include="Views\Mesaj\Gonderilen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

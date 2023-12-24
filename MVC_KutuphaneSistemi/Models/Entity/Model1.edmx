@@ -77,6 +77,17 @@
           <Property Name="Fotograf" Type="nvarchar" MaxLength="500" />
           <Property Name="Durum" Type="bit" />
         </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gonderen" Type="nvarchar" MaxLength="50" />
+          <Property Name="Alici" Type="nvarchar" MaxLength="50" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mesaj" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tarih" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="Personeller">
           <Key>
             <PropertyRef Name="ID" />
@@ -244,6 +255,7 @@
           <EntitySet Name="Kasalar" EntityType="Self.Kasalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesajlar" EntityType="Self.Mesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
@@ -547,6 +559,7 @@
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="Hakkimizda" EntityType="DBKutuphaneModel.Hakkimizda" />
           <EntitySet Name="Iletisim" EntityType="DBKutuphaneModel.Iletisim" />
+          <EntitySet Name="Mesajlar" EntityType="DBKutuphaneModel.Mesajlar" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -575,6 +588,17 @@
           <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gonderen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Alici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
@@ -730,6 +754,18 @@
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesajlar">
+            <EntityTypeMapping TypeName="DBKutuphaneModel.Mesajlar">
+              <MappingFragment StoreEntitySet="Mesajlar">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Alici" ColumnName="Alici" />
+                <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,60 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Mesajlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="card mt-5">
+    <div class="card-header">
+        <h2 class=""><b>Mesajlar / </b>Gelen Mesaj Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        <table id="DataTable" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Gönderen</th>
+                    <th>Konu</th>
+                    <th>Mesaj</th>
+                    <th>Tarih</th>
+                    <th>İşlem</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var mesaj in Model)
+                {
+                <tr>
+                    <td>@mesaj.Gonderen</td>
+                    <td>@mesaj.Konu</td>
+                    <td>@mesaj.Mesaj</td>
+                    <td>@mesaj.Tarih</td>
+                    <td>
+                        <a href="/Mesaj/MesajSil/@mesaj.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
+                        <a href="/Mesaj/MesajGetir/@mesaj.ID" class="btn btn-primary">GÜNCELLE</a>
+                        <a href="/Mesaj/MesajDetay/@mesaj.ID" class="btn btn-success">DETAY</a>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="card-footer">
+        <br />
+        <a href="/Mesaj/YeniMesaj/" class="btn btn-warning">Yeni Mesaj Gönder</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
