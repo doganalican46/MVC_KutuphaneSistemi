@@ -16,7 +16,6 @@
             <thead>
                 <tr>
                     <th>YAZAR ADI</th>
-                    <th>DETAY</th>
                     <th>DURUM</th>
                     <th>İŞLEMLER</th>
                 </tr>
@@ -26,14 +25,13 @@
                 {
                     <tr>
                         <td>@yazar.Ad @yazar.Soyad</td>
-                        <td>@yazar.Detay</td>
                         <td style="color: @(yazar.Durum.HasValue && yazar.Durum.Value ? "green" : "red")">
                             @(yazar.Durum.HasValue ? (yazar.Durum.Value ? "AKTİF" : "PASİF") : "N/A")
                         </td>
                         <td>
                             <a href="/Yazar/YazarSil/@yazar.ID" class="btn btn-danger" onclick="return confirm('Gerçekten silmek istiyor musunuz?')">SİL</a>
                             <a href="/Yazar/YazarGetir/@yazar.ID" class="btn btn-primary">GÜNCELLE</a>
-                            <a href="/Kitap/YeniKitap/yazar=@yazar.Ad?@yazar.Soyad" class="btn btn-success">KİTAP EKLE</a>
+                            <a class="btn btn-success" href="/Yazar/YazarDetay/@yazar.ID">DETAY</a>
                         </td>
                     </tr>
                 }

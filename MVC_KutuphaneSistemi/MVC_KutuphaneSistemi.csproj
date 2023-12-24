@@ -484,6 +484,8 @@
     <Content Include="Views\Mesaj\Index.cshtml" />
     <Content Include="Views\Mesaj\YeniMesaj.cshtml" />
     <Content Include="Views\Mesaj\Gonderilen.cshtml" />
+    <Content Include="Views\User\Kitaplarim.cshtml" />
+    <Content Include="Views\Yazar\YazarDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

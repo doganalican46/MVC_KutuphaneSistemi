@@ -23,10 +23,26 @@ namespace MVC_KutuphaneSistemi.Controllers
             List<SelectListItem> personeller = (from i in db.Personeller.Where(k => k.Durum == true).ToList()
                                                 select new SelectListItem
                                                 {
-                                                    Text = i.Ad,
+                                                    Text = i.Ad+" "+i.Soyad,
                                                     Value = i.ID.ToString()
                                                 }).ToList();
             ViewBag.personeller = personeller;
+
+            List<SelectListItem> kitaplar = (from i in db.Kitaplar.Where(k => k.Durum == true).ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = i.Ad,
+                                                    Value = i.ID.ToString()
+                                                }).ToList();
+            ViewBag.kitaplar = kitaplar;
+
+            List<SelectListItem> uyeler = (from i in db.Uyeler.Where(k => k.Durum == true).ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.Ad + " " + i.Soyad,
+                                                 Value = i.ID.ToString()
+                                             }).ToList();
+            ViewBag.uyeler = uyeler;
             return View();
         }
 

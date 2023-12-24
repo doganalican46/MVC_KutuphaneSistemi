@@ -1,0 +1,76 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Kitaplar>
+@{
+    ViewBag.Title = "YazarDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Yazarlar / </b>Yazar Detay</h2>
+        <br />
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Yazar Bilgileri</h3><br />
+                <img src="@ViewBag.kitapfotograf" alt="Yazar Fotoğraf" width="200px" height="300px" />
+                <br /> <br />
+                <p><strong>Yazar Adı-Soyadı:</strong> @ViewBag.yazarad @ViewBag.yazarsoyad </p>
+                <p><strong>Okunma Sayısı:</strong> @*@ViewBag.okunmaSayisi*@ </p>
+            </div>
+
+            <div class="col-md-8">
+                <h3>Kitap Listesi</h3><br />
+                @if (Model.Any())
+                {
+                    <table id="DataTable" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Kitap ID</th>
+                                <th>Kitap Adı</th>
+                                <th>Toplam Alınma Sayısı</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var hareket in Model)
+                            {
+                                <tr>
+                                    <td>@hareket.ID</td>
+                                    <td>@hareket.Ad</td>
+                                    <td></td>
+                                    <td><a href="/Kitap/KitapGetir/@hareket.ID" class="btn btn-success">Düzenle</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Yazarın sistemde kitabı yoktur.</p>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <br />
+        <a href="/Yazar/Index/" class="btn btn-danger">Geri Dön</a>
+        <a href="/Yazar/YazarGetir/@ViewBag.YazarID" class="btn btn-primary">Düzenle</a>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

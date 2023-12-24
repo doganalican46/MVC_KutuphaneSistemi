@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MVC_KutuphaneSistemi.Models.Entity;
 namespace MVC_KutuphaneSistemi.Controllers
 {
@@ -44,6 +45,20 @@ namespace MVC_KutuphaneSistemi.Controllers
             return View();
         }
 
+
+        public ActionResult Kitaplarim()
+        {
+            var kullanici = (string)Session["Mail"];
+            var id=db.Uyeler.Where(x=>x.Mail==kullanici.ToString()).Select(z=>z.ID).FirstOrDefault();
+            var degerler = db.Hareketler.Where(x=>x.UyeID==id).ToList();
+            return View(degerler);
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("GirisYap","Login");
+        }
 
     }
 }

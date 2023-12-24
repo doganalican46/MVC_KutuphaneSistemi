@@ -1,0 +1,51 @@
+﻿@using MVC_KutuphaneSistemi.Models.Entity
+@model List<Hareketler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="mt-5 card">
+    <div class="card-header">
+        <h2 class="mb-5"><b>Kitaplarım / </b>Okuğum Kitap Listesi</h2>
+        <br />
+    </div>
+
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <table id="DataTable" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>KİTAP ADI</th>
+                        <th>ALIŞ TARİHİ</th>
+                        <th>ÜYENİN GETİRDİĞİ TARİH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var kg in Model)
+                    {
+                        <tr>
+                            <td>@kg.Kitaplar.Ad</td>
+                            <td>@kg.AlisTarihi </td>
+                            <td>@kg.UyeninGetirdigiTarih</td>
+                            <td>  </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>İşlem bulunamadı.</p>
+        }
+    </div>
+
+    <div class="card-footer">
+        <br />
+        <a href="/Odunc/OduncVer/" class="btn btn-warning">Ödünç Ver</a>
+    </div>
+</div>
+
+
+

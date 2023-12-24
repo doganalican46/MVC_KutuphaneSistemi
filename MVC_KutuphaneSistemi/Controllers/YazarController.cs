@@ -57,5 +57,19 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult YazarDetay(int id)
+        {
+            var yazar = db.Yazarlar.Find(id);
+            var kitaplari = db.Kitaplar.Where(h => h.YazarID == yazar.ID).ToList();
+
+            ViewBag.yazarad = yazar.Ad;
+            ViewBag.yazarsoyad = yazar.Soyad;
+            ViewBag.YazarID = yazar.ID;
+
+
+
+            return View("YazarDetay", kitaplari);
+        }
     }
 }

@@ -11,11 +11,15 @@
     </div>
     <form method="post" class="form-group">
         <div class="card-body">
-            <label>Üye ID:</label>
-            @Html.TextBoxFor(k => k.UyeID, new { @class = "form-control" })
+            <label>Üye:</label>
+            @*@Html.TextBoxFor(k => k.UyeID, new { @class = "form-control" })*@
+            @Html.DropDownListFor(k => k.UyeID, (List<SelectListItem>)ViewBag.uyeler, new { @class = "form-control" })
+
             <br />
-            <label>Kitap ID:</label>
-            @Html.TextBoxFor(k => k.KitapID, new { @class = "form-control" })
+            <label>Kitap:</label>
+            @*@Html.TextBoxFor(k => k.KitapID, new { @class = "form-control" })*@
+            @Html.DropDownListFor(k => k.KitapID, (List<SelectListItem>)ViewBag.kitaplar, new { @class = "form-control" })
+
             <br />
             <label>Personel:</label>
             @Html.DropDownListFor(k => k.PersonelID, (List<SelectListItem>)ViewBag.personeller, new { @class = "form-control" })
