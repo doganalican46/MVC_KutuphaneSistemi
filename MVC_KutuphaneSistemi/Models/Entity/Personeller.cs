@@ -24,6 +24,8 @@ namespace MVC_KutuphaneSistemi.Models.Entity
         public string Ad { get; set; }
         public string Soyad { get; set; }
         public Nullable<bool> Durum { get; set; }
+        public string Mail { get; set; }
+        public string Sifre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hareketler> Hareketler { get; set; }

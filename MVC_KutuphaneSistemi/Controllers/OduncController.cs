@@ -16,7 +16,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             var degerler = db.Hareketler.Where(x=>x.Durum==false).ToList();
             return View(degerler);
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult OduncVer()
         {
@@ -45,7 +45,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             ViewBag.uyeler = uyeler;
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult OduncVer(Hareketler k)
         {
@@ -53,7 +53,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult OduncAl(Hareketler p)
         {
             var OduncAl = db.Hareketler.Find(p.ID);
@@ -65,7 +65,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             ViewBag.gecikmeSayisi = gecikilenGunSayisi.TotalDays;
             return View("OduncAl", OduncAl);
         }
-
+        [Authorize]
         public ActionResult OduncGuncelle(Hareketler k)
         {
             var iade = db.Hareketler.Find(k.ID);

@@ -10,6 +10,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Hareket
+        [Authorize]
         public ActionResult Index()
         {
             return View();

@@ -45,7 +45,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             return View();
         }
 
-
+        [Authorize]
         public ActionResult Kitaplarim()
         {
             var kullanici = (string)Session["Mail"];
@@ -53,7 +53,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             var degerler = db.Hareketler.Where(x=>x.UyeID==id).ToList();
             return View(degerler);
         }
-
+        [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

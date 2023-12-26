@@ -10,6 +10,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Islem
+        [Authorize]
         public ActionResult Index()
         {
             var degerler = db.Hareketler.Where(x => x.Durum == true).ToList();

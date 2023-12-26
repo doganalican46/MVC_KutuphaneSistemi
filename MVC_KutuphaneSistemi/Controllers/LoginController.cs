@@ -41,13 +41,11 @@ namespace MVC_KutuphaneSistemi.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Register(Uyeler u)
@@ -59,6 +57,37 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.Uyeler.Add(u);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult PersonelGirisYap()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult PersonelGirisYap(Personeller u)
+        {
+            var bilgiler = db.Personeller.FirstOrDefault(x => x.Mail == u.Mail && x.Sifre == u.Sifre);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.Mail, false);
+
+                //TempData["ID"] = bilgiler.ID.ToString();
+                //TempData["Ad"]=bilgiler.Ad.ToString();
+                //TempData["Soyad"] = bilgiler.Soyad.ToString();
+                //TempData["KullaniciAd"] = bilgiler.KullaniciAdi.ToString();
+                Session["Mail"] = bilgiler.Mail.ToString();
+                //TempData["Sifre"] = bilgiler.Sifre.ToString();
+                //TempData["Okul"] = bilgiler.OkulAdi.ToString();
+
+                return RedirectToAction("Index", "Istatislik");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

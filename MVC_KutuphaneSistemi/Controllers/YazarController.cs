@@ -13,6 +13,7 @@ namespace MVC_KutuphaneSistemi.Controllers
         DBKutuphaneEntities db = new DBKutuphaneEntities();
 
         // GET: Yazar
+        [Authorize]
         public ActionResult Index()
         {
             var degerler = db.Yazarlar.ToList();
@@ -20,19 +21,21 @@ namespace MVC_KutuphaneSistemi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult YeniYazar()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult YeniYazar(Yazarlar y)
         {
             db.Yazarlar.Add(y);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult YazarSil(int id)
         {
             var yazar = db.Yazarlar.Find(id);
@@ -40,13 +43,13 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult YazarGetir(int id)
         {
             var yazar = db.Yazarlar.Find(id);
             return View("YazarGetir", yazar);
         }
-
+        [Authorize]
         public ActionResult YazarGuncelle(Yazarlar y)
         {
             var yazar = db.Yazarlar.Find(y.ID);
@@ -57,7 +60,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult YazarDetay(int id)
         {
             var yazar = db.Yazarlar.Find(id);

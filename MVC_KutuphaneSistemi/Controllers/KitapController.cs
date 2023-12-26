@@ -12,14 +12,14 @@ namespace MVC_KutuphaneSistemi.Controllers
     public class KitapController : Controller
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
-
+        [Authorize]
         // GET: Kitap
         public ActionResult Index()
         {
             var kitaplar = db.Kitaplar.ToList();
             return View(kitaplar);
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult YeniKitap()
         {
@@ -43,7 +43,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             return View();
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult YeniKitap(Kitaplar y)
         {
@@ -58,10 +58,10 @@ namespace MVC_KutuphaneSistemi.Controllers
             return RedirectToAction("Index");
         }
 
-       
-        
 
 
+
+        [Authorize]
         public ActionResult KitapSil(int id)
         {
             var Kitap = db.Kitaplar.Find(id);
@@ -70,10 +70,10 @@ namespace MVC_KutuphaneSistemi.Controllers
             return RedirectToAction("Index");
         }
 
- 
 
 
 
+        [Authorize]
         public ActionResult KitapGetir(int id)
         {
             var Kitap = db.Kitaplar.Find(id);
@@ -94,7 +94,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             ViewBag.yazarlar = yazarlar;
             return View("KitapGetir", Kitap);
         }
-
+        [Authorize]
         public ActionResult KitapGuncelle(Kitaplar y)
         {
             var Kitap = db.Kitaplar.Find(y.ID);
@@ -114,7 +114,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize]
         public ActionResult KitapDetay(int id)
         {
             var kitap = db.Kitaplar.Find(id);

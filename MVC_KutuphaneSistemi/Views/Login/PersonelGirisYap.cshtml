@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>KÜTÜPHANE SİSTEMİ-GİRİŞ YAP</title>
+    <title>KÜTÜPHANE SİSTEMİ- PERSONEL GİRİŞ</title>
     <!-- meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,10 +30,10 @@
 
 
 <body>
-    <h1>KÜTÜPHANE SİSTEMİ GİRİŞ EKRANI</h1>
+    <h2>KÜTÜPHANE SİSTEMİ PERSONEL GİRİŞ EKRANI</h2>
     <div class=" w3l-login-form">
         <h2>Giriş Yap</h2>
-        @using (Html.BeginForm("GirisYap", "Login", FormMethod.Post))
+        @using (Html.BeginForm("PersonelGirisYap", "Login", FormMethod.Post))
         {
             <div class=" w3l-form-group">
                 <label>Mail:</label>
@@ -50,10 +50,10 @@
                 </div>
             </div>
             <div class="forgot">
-                <a href="/Login/PersonelGirisYap/">Personel girişi için tıklayın</a>
+                
             </div>
             <button type="submit">GİRİŞ YAP</button>
-        }        <p class=" w3l-register-p">Hesabınız yok mu?<a href="/Login/Register/" class="register"> KAYIT OL</a></p>
+        }        <p class=" w3l-register-p">Personel değil misiniz?<a href="/Login/GirisYap/" class="register">Üye girişi için tıklayın...</a></p>
         <br />
         <a href="/Vitrin/Index/">Siteye Dön</a>
     </div>

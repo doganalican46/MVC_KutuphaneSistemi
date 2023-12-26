@@ -10,6 +10,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Iletisim
+        [Authorize]
         public ActionResult Index()
         {
             var iletisim = db.Iletisim.ToList();

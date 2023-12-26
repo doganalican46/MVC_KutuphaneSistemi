@@ -9,6 +9,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     public class KasaController : Controller
     {
         // GET: Kasa
+        [Authorize]
         public ActionResult Index()
         {
             return View();

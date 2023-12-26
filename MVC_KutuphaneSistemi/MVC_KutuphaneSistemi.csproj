@@ -486,6 +486,7 @@
     <Content Include="Views\Mesaj\Gonderilen.cshtml" />
     <Content Include="Views\User\Kitaplarim.cshtml" />
     <Content Include="Views\Yazar\YazarDetay.cshtml" />
+    <Content Include="Views\Login\PersonelGirisYap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

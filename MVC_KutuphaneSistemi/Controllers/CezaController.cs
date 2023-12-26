@@ -10,7 +10,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     public class CezaController : Controller
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
-
+        [Authorize]
         // GET: Ceza
         public ActionResult Index()
         {

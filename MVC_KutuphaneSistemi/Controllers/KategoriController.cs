@@ -10,6 +10,7 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Kategori
+        [Authorize]
         public ActionResult Index()
         {
             var degerler = db.Kategoriler.ToList();
@@ -17,6 +18,7 @@ namespace MVC_KutuphaneSistemi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult YeniKategori()
         {
             return View();
@@ -24,13 +26,14 @@ namespace MVC_KutuphaneSistemi.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public ActionResult YeniKategori(Kategoriler k)
         {
             db.Kategoriler.Add(k);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult KategoriSil(int id)
         {
             var kategori = db.Kategoriler.Find(id);
@@ -38,13 +41,13 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult KategoriGetir(int id)
         {
             var kategori = db.Kategoriler.Find(id);
             return View("KategoriGetir",kategori);
         }
-
+        [Authorize]
         public ActionResult KategoriGuncelle(Kategoriler k)
         {
             var kategori = db.Kategoriler.Find(k.ID);

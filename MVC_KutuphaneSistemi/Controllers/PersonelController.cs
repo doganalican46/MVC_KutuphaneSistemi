@@ -10,19 +10,20 @@ namespace MVC_KutuphaneSistemi.Controllers
     {
         DBKutuphaneEntities db = new DBKutuphaneEntities();
         // GET: Personel
+        [Authorize]
         public ActionResult Index()
         {
             var personeller = db.Personeller.ToList();
             return View(personeller);
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult YeniPersonel()
         {
             return View();
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult YeniPersonel(Personeller k)
         {
@@ -30,7 +31,7 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult PersonelSil(int id)
         {
             var Personel = db.Personeller.Find(id);
@@ -38,13 +39,13 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult PersonelGetir(int id)
         {
             var Personel = db.Personeller.Find(id);
             return View("PersonelGetir", Personel);
         }
-
+        [Authorize]
         public ActionResult PersonelGuncelle(Personeller k)
         {
             var Personel = db.Personeller.Find(k.ID);
@@ -54,12 +55,13 @@ namespace MVC_KutuphaneSistemi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize]
         public class PersonelDetayViewModel
         {
             public Personeller Personel { get; set; }
             public List<Hareketler> Hareketler { get; set; }
         }
-
+        [Authorize]
         public ActionResult PersonelDetay(int id)
         {
             var personel = db.Personeller.Find(id);
